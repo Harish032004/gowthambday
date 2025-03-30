@@ -144,7 +144,6 @@ body {
 }
 
 
-
 /* 🎨 First Impression Section */
 #first-impression {
     padding: 80px 20px;
@@ -224,7 +223,7 @@ body {
     font-weight: bold;
 }
 
-/* 🔄 Flip Animation on Hover */
+/* 🔄 Flip Animation */
 #first-impression .comparison-card:hover .card-inner {
     transform: rotateY(180deg);
 }
@@ -244,11 +243,16 @@ body {
     }
 
     #first-impression .comparison-card {
-        width: 90%;
-        height: auto;
+        width: 100%;
+        max-width: 300px; /* Ensures proper card size */
+        height: 380px;
     }
 
-    #first-impression .card-front, 
+    #first-impression .card-inner {
+        transition: transform 0.8s ease-in-out;
+    }
+
+    #first-impression .card-front,
     #first-impression .card-back {
         padding: 15px;
     }
@@ -261,6 +265,16 @@ body {
 
     #first-impression .section-subtitle {
         font-size: 1rem;
+    }
+
+    #first-impression .comparison-card {
+        width: 90%; /* Makes cards take full width on mobile */
+        height: auto;
+    }
+
+    #first-impression .card-front,
+    #first-impression .card-back {
+        font-size: 1rem; /* Adjusts text size for small screens */
     }
 }
 
