@@ -143,43 +143,52 @@ body {
     }
 }
 
-
 /* 🎨 First Impression Section */
 #first-impression {
-    padding: 80px 20px;
+    padding: 60px 15px;
     background: url('WhatsApp\ Image\ 2025-02-13\ at\ 10.39.16\ PM.jpeg') no-repeat center center/cover;
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Section Title */
 #first-impression .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
     font-weight: 700;
     color: #ff4d6d;
     margin-bottom: 10px;
 }
 
 #first-impression .section-subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     margin-bottom: 30px;
     color: #555;
+    padding: 0 15px;
 }
 
 /* 🆚 Comparison Cards */
 #first-impression .comparison-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 15px;
 }
 
 /* 🔄 Flip Card Effect */
 #first-impression .comparison-card {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 400px;
     perspective: 1000px;
     cursor: pointer;
     position: relative;
+    margin-bottom: 20px;
 }
 
 /* 🌀 Inner Card Container (for flipping) */
@@ -189,6 +198,7 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    border-radius: 10px;
 }
 
 /* Front & Back Cards */
@@ -206,6 +216,7 @@ body {
     align-items: center;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
+    box-sizing: border-box;
 }
 
 /* Front Card */
@@ -218,66 +229,85 @@ body {
 /* Back Card (Flipped) */
 #first-impression .card-back {
     transform: rotateY(180deg);
-    background: #ff4d6d;  /* Darker background */
-    color: white;  /* Text is now visible */
+    background: #ff4d6d;
+    color: white;
     font-weight: bold;
 }
 
-/* 🔄 Flip Animation */
-#first-impression .comparison-card:hover .card-inner {
+/* 🔄 Flip Animation on Hover and Touch */
+#first-impression .comparison-card:hover .card-inner,
+#first-impression .comparison-card:focus .card-inner,
+#first-impression .comparison-card.active .card-inner {
     transform: rotateY(180deg);
 }
 
 /* 📸 Image Styling */
 #first-impression .comparison-card img {
     width: 80%;
+    max-width: 200px;
     border-radius: 10px;
-    margin-top: 10px;
+    margin: 10px auto;
+    height: auto;
+}
+
+/* Card Content */
+#first-impression .card-content {
+    padding: 15px;
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* 📱 Responsive Design */
-@media (max-width: 768px) {
-    #first-impression .comparison-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
+@media (max-width: 1024px) {
     #first-impression .comparison-card {
-        width: 100%;
-        max-width: 300px; /* Ensures proper card size */
+        max-width: 280px;
         height: 380px;
     }
+}
 
-    #first-impression .card-inner {
-        transition: transform 0.8s ease-in-out;
+@media (max-width: 768px) {
+    #first-impression {
+        padding: 40px 10px;
     }
-
-    #first-impression .card-front,
+    
+    #first-impression .comparison-container {
+        gap: 15px;
+    }
+    
+    #first-impression .comparison-card {
+        max-width: 100%;
+        height: 350px;
+    }
+    
+    #first-impression .card-front, 
     #first-impression .card-back {
         padding: 15px;
     }
 }
 
 @media (max-width: 480px) {
-    #first-impression .section-title {
-        font-size: 2rem;
-    }
-
-    #first-impression .section-subtitle {
-        font-size: 1rem;
-    }
-
     #first-impression .comparison-card {
-        width: 90%; /* Makes cards take full width on mobile */
-        height: auto;
+        height: 300px;
     }
-
-    #first-impression .card-front,
-    #first-impression .card-back {
-        font-size: 1rem; /* Adjusts text size for small screens */
+    
+    #first-impression .card-content {
+        padding: 10px;
+    }
+    
+    #first-impression .comparison-card img {
+        width: 70%;
     }
 }
 
+/* Touch support for mobile devices */
+@media (hover: none) {
+    #first-impression .comparison-card {
+        cursor: pointer;
+    }
+}
 
 
 /* 🎨 Best Advice Section */
